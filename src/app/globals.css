@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #07070c;
+  --muted: #64748b;
+  --surface: #f8f8fb;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #5b3cb8;
+  color: #dbff4d;
+}
+
+@layer utilities {
+  .text-gradient-violet {
+    @apply bg-gradient-to-r from-violet-muted via-violet-glow to-lime-brand bg-clip-text text-transparent;
+  }
+}
