@@ -1,57 +1,23 @@
-/**
- * Медиа сайта: баннер и фото товаров (nikifilini).
- * Для второго кадра карточки (hover) указана та же ссылка — добавьте отдельный ракурс при желании.
- */
-
-const BANNER =
-  "https://nikifilini.com/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2026/04/category-ubit-billa-2048x1366.jpg.webp";
+/** Локальные изображения — всегда загружаются, без внешних ссылок */
 
 export const heroSlides = [
   {
-    src: BANNER,
-    alt: "Баннер — распродажа",
-    objectPosition: "object-[center_center]",
+    src: "/images/hero.svg",
+    alt: "Студия дизайна ALISA — оформление профилей",
+    objectPosition: "object-center",
   },
 ] as const;
 
-export const productPhotos: Record<
-  string,
-  { image: string; hoverImage: string }
-> = {
-  "1": {
-    image:
-      "https://nikifilini.com/wp-content/uploads/2026/04/mokap-veshhejayvtsj-1.jpg",
-    hoverImage:
-      "https://nikifilini.com/wp-content/uploads/2026/04/mokap-veshhejayvtsj-1.jpg",
-  },
-  "2": {
-    image:
-      "https://nikifilini.com/wp-content/uploads/2026/04/tishka-var-spina-1.jpg",
-    hoverImage:
-      "https://nikifilini.com/wp-content/uploads/2026/04/tishka-var-spina-1.jpg",
-  },
-  "3": {
-    image:
-      "https://nikifilini.com/wp-content/uploads/2026/04/mokap-veshhejwd-1.jpg",
-    hoverImage:
-      "https://nikifilini.com/wp-content/uploads/2026/04/mokap-veshhejwd-1.jpg",
-  },
-  "4": {
-    image:
-      "https://nikifilini.com/wp-content/uploads/2026/02/pered-bodi-1.jpg",
-    hoverImage:
-      "https://nikifilini.com/wp-content/uploads/2026/02/pered-bodi-1.jpg",
-  },
-  "5": {
-    image:
-      "https://nikifilini.com/wp-content/uploads/2025/07/t-body-SMBR-X-NF-_-T-TOPPA-1-2-1.jpg",
-    hoverImage:
-      "https://nikifilini.com/wp-content/uploads/2025/07/t-body-SMBR-X-NF-_-T-TOPPA-1-2-1.jpg",
-  },
-  "6": {
-    image:
-      "https://nikifilini.com/wp-content/uploads/2025/11/dzhinsy-p-2.jpg",
-    hoverImage:
-      "https://nikifilini.com/wp-content/uploads/2025/11/dzhinsy-p-2.jpg",
-  },
+export const servicePhotos: Record<string, string> = {
+  "1": "/images/1.png",
+  "2": "/images/2.png",
+  "3": "/images/3.png",
+  "4": "/images/4.png",
+};
+
+export const productPhotos: Record<string, string> = {
+  "1": "/images/5.png",
+  "2": "/images/6.png",
+  "3": "/images/7.png",
+  "4": "/images/8.png",
 };

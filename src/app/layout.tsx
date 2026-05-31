@@ -1,20 +1,29 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Cormorant_Garamond, Noto_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageTransition } from "@/components/PageTransition";
-import { Providers } from "@/components/Providers";
+import { SakuraPetals } from "@/components/SakuraPetals";
+import { SITE } from "@/lib/site";
 
-const inter = Inter({
+const display = Cormorant_Garamond({
   subsets: ["latin", "cyrillic"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const sans = Noto_Sans({
+  subsets: ["latin", "cyrillic"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-sans",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "ALISAFILINI — мода и вещи сезона",
-  description: "ALISAFILINI — минималистичный витринный магазин одежды.",
+  title: `${SITE.fullName} — оформление профилей`,
+  description: SITE.description,
 };
 
 export default function RootLayout({
@@ -23,13 +32,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={inter.variable}>
+    <html lang="ru" className={`${display.variable} ${sans.variable}`}>
       <body className="font-sans antialiased">
-        <Providers>
-          <Header />
-          <PageTransition>{children}</PageTransition>
-          <Footer />
-        </Providers>
+        <SakuraPetals />
+        <Header />
+        <PageTransition>{children}</PageTransition>
+        <Footer />
       </body>
     </html>
   );

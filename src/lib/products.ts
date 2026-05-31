@@ -4,66 +4,46 @@ export type Product = {
   id: string;
   name: string;
   price: number;
-  compareAtPrice?: number;
   image: string;
-  hoverImage?: string;
-  category: string;
-  onSale?: boolean;
+  description: string;
 };
 
-/** Названия и цены в ₽; картинки в `media.ts` → productPhotos */
-const catalog: Omit<Product, "image" | "hoverImage">[] = [
+const catalog: Omit<Product, "image">[] = [
   {
     id: "1",
-    name: "ФУТБОЛКА | HUNTER'S INSTINCT (ИНСТИНКТ ОХОТНИКА)",
-    price: 4074,
-    category: "Футболки",
+    name: "Набор «YouTube Start»",
+    price: 990,
+    description: "Готовые шаблоны аватарки и channel art для нового YouTube-канала.",
   },
   {
     id: "2",
-    name: "ФУТБОЛКА | CURSED ASCENSION (ПРОКЛЯТОЕ ВОЗНЕСЕНИЕ)",
-    price: 4473,
-    category: "Футболки",
+    name: "Набор «Twitch Streamer»",
+    price: 1290,
+    description: "Аватар, офлайн-баннер, панели и заглушки для Twitch-канала.",
   },
   {
     id: "3",
-    name: "ФУТБОЛКА | GOJO (ГОДЖО)",
-    price: 3570,
-    category: "Футболки",
+    name: "Пакет «VK и Telegram»",
+    price: 790,
+    description: "Обложка, аватар и баннеры для сообщества VK и канала в Telegram.",
   },
   {
     id: "4",
-    name: "БОДИ | PAIN AWAKENING (ПРОБУЖДЕНИЕ БОЛИ)",
-    price: 2994,
-    category: "Боди",
-  },
-  {
-    id: "5",
-    name: "БОДИ SOMBRA X NIKIFILINI | T-TOPPA 1 (ТОП 1)",
-    price: 3368,
-    category: "Боди",
-  },
-  {
-    id: "6",
-    name: "ДЖИНСЫ | OPPAI DARK BLUE (БОЛЬШАЯ СИЛА, ТЕМНО-СИНИЙ)",
-    price: 6925,
-    category: "Джинсы",
+    name: "Шаблоны баннеров (5 шт.)",
+    price: 590,
+    description: "Универсальные рекламные баннеры для постов, сторис и промо-акций.",
   },
 ];
 
-function attachPhotos(p: (typeof catalog)[number]): Product {
-  const photos = productPhotos[p.id];
-  if (!photos) {
+function attachPhoto(p: (typeof catalog)[number]): Product {
+  const photo = productPhotos[p.id];
+  if (!photo) {
     throw new Error(`productPhotos missing id "${p.id}" — добавьте в src/lib/media.ts`);
   }
-  return {
-    ...p,
-    image: photos.image,
-    hoverImage: photos.hoverImage,
-  };
+  return { ...p, image: photo };
 }
 
-export const products: Product[] = catalog.map(attachPhotos);
+export const products: Product[] = catalog.map(attachPhoto);
 
 export function formatPrice(n: number) {
   return new Intl.NumberFormat("ru-RU", {
@@ -73,7 +53,3 @@ export function formatPrice(n: number) {
     maximumFractionDigits: 0,
   }).format(n);
 }
-
-export const saleProducts = products.filter(
-  (p) => p.onSale || (p.compareAtPrice && p.compareAtPrice > p.price),
-);

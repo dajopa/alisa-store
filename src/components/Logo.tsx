@@ -1,38 +1,52 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { SITE } from "@/lib/site";
 
 type Props = {
-  /** В шапке над героем mix-blend может искажать цвета — слегка другая интенсивность */
   context?: "headerBar" | "headerHero" | "footer";
   className?: string;
 };
 
-/**
- * Дизайнерский локап: читается как ALISAFILINI — ALISA (лёгкий ритм) + FILINI (акцент).
- */
+function SakuraMark({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      aria-hidden
+      className={`h-4 w-4 ${className}`}
+      fill="currentColor"
+    >
+      <path d="M10 1.5c-1 2.3-2.8 4-5.1 4.8 2.3.8 4.1 2.5 5.1 4.8 1-2.3 2.8-4 5.1-4.8-2.3-.8-4.1-2.5-5.1-4.8Z" />
+    </svg>
+  );
+}
+
 export function Logo({ context = "headerBar", className = "" }: Props) {
-  const filiniClass =
+  const accentClass =
     context === "footer"
-      ? "text-lime-brand"
+      ? "text-sakura-light"
       : context === "headerHero"
-        ? "text-lime-brand drop-shadow-[0_0_12px_rgba(219,255,77,0.35)]"
-        : "text-lime-brand";
+        ? "text-sakura-light drop-shadow-[0_0_12px_rgba(255,183,197,0.45)]"
+        : "text-sakura-light";
+
+  const subClass = context === "footer" ? "text-washi/55" : "text-washi/70";
 
   return (
     <motion.span
-      className={`inline-flex items-baseline gap-0 ${className}`}
+      className={`inline-flex items-center gap-2.5 leading-none ${className}`}
       whileHover={{ scale: 1.02 }}
       transition={{ type: "spring", stiffness: 520, damping: 32 }}
     >
-      <span className="font-extralight uppercase tracking-[0.42em] text-[11px] sm:text-xs">
-        ALISA
-      </span>
-      <span
-        className={`relative ml-[1px] pb-1 font-semibold uppercase tracking-[0.22em] text-[13px] sm:text-sm ${filiniClass}`}
-      >
-        <span className="absolute -bottom-1 left-0 right-0 mx-auto h-px max-w-[92%] bg-violet-glow/55 sm:-bottom-1.5" />
-        FILINI
+      <SakuraMark className={accentClass} />
+      <span className="inline-flex flex-col items-start">
+        <span className={`text-[9px] font-medium uppercase tracking-[0.35em] ${subClass} sm:text-[10px]`}>
+          Студия дизайна
+        </span>
+        <span
+          className={`heading-display mt-0.5 text-lg font-semibold uppercase tracking-[0.22em] sm:text-xl ${accentClass}`}
+        >
+          {SITE.brand}
+        </span>
       </span>
     </motion.span>
   );

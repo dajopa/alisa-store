@@ -2,15 +2,15 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import type { Product } from "@/lib/products";
-import { formatPrice } from "@/lib/products";
+import type { Service } from "@/lib/services";
+import { formatPrice } from "@/lib/services";
 
 type Props = {
-  product: Product;
+  service: Service;
   index?: number;
 };
 
-export function ProductCard({ product, index = 0 }: Props) {
+export function ServiceCard({ service, index = 0 }: Props) {
   return (
     <motion.article
       initial={{ opacity: 0, y: 32 }}
@@ -23,10 +23,10 @@ export function ProductCard({ product, index = 0 }: Props) {
       }}
       className="card-sakura group"
     >
-      <div className="relative aspect-square overflow-hidden bg-washi-dark">
+      <div className="relative aspect-[4/3] overflow-hidden bg-washi-dark">
         <Image
-          src={product.image}
-          alt={product.name}
+          src={service.image}
+          alt={service.name}
           fill
           sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 25vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -35,10 +35,10 @@ export function ProductCard({ product, index = 0 }: Props) {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-plum-deep/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       </div>
       <div className="border-t border-sakura/15 p-5 sm:p-6">
-        <h3 className="heading-display text-xl font-semibold text-plum-deep">{product.name}</h3>
-        <p className="mt-2 text-sm font-light leading-relaxed text-muted">{product.description}</p>
+        <h3 className="heading-display text-xl font-semibold text-plum-deep">{service.name}</h3>
+        <p className="mt-2 text-sm font-light leading-relaxed text-muted">{service.description}</p>
         <p className="mt-4 text-lg font-semibold text-sakura-deep">
-          Стоимость: {formatPrice(product.price)}
+          Стоимость: {formatPrice(service.price)}
         </p>
       </div>
     </motion.article>

@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #07070c;
-  --muted: #64748b;
-  --surface: #f8f8fb;
+  --background: #fff8f5;
+  --foreground: #1f1418;
+  --muted: #8a6b72;
+  --surface: #fdf2ec;
 }
 
 html {
@@ -16,17 +16,73 @@ html {
 body {
   color: var(--foreground);
   background: var(--background);
+  background-image: radial-gradient(
+      ellipse 80% 50% at 50% -10%,
+      rgba(255, 183, 197, 0.25),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 100% 50%,
+      rgba(244, 167, 185, 0.12),
+      transparent
+    );
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background: #5b3cb8;
-  color: #dbff4d;
+  background: #f4a7b9;
+  color: #2d1219;
+}
+
+@keyframes sakura-fall {
+  0% {
+    transform: translate3d(0, -12vh, 0) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+  8% {
+    opacity: var(--petal-opacity, 0.85);
+  }
+  25% {
+    transform: translate3d(calc(var(--sway) * 0.4), 25vh, 0) rotate(90deg) scale(0.95);
+  }
+  50% {
+    transform: translate3d(calc(var(--sway) * -0.3), 52vh, 0) rotate(200deg) scale(1);
+  }
+  75% {
+    transform: translate3d(calc(var(--sway) * 0.6), 78vh, 0) rotate(300deg) scale(0.9);
+  }
+  100% {
+    transform: translate3d(calc(var(--sway) * 0.2), 112vh, 0) rotate(420deg) scale(0.85);
+    opacity: 0;
+  }
+}
+
+.sakura-petal {
+  position: absolute;
+  top: -5rem;
+  pointer-events: none;
+  will-change: transform, opacity;
+  animation: sakura-fall linear infinite;
 }
 
 @layer utilities {
-  .text-gradient-violet {
-    @apply bg-gradient-to-r from-violet-muted via-violet-glow to-lime-brand bg-clip-text text-transparent;
+  .text-gradient-sakura {
+    @apply bg-gradient-to-r from-sakura-deep via-sakura to-gold-soft bg-clip-text text-transparent;
+  }
+
+  .heading-display {
+    @apply font-display tracking-wide;
+  }
+
+  .card-sakura {
+    @apply overflow-hidden rounded-sm border border-sakura/25 bg-washi shadow-sm transition-shadow hover:shadow-sakura;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sakura-petal {
+    animation: none;
+    display: none;
   }
 }
