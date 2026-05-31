@@ -9,7 +9,37 @@
       <stop offset="0%" stop-color="#ffb7c5" stop-opacity="0.28"/>
       <stop offset="100%" stop-color="#ffb7c5" stop-opacity="0"/>
     </radialGradient>
+    <linearGradient id="petalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd6e0"/>
+      <stop offset="100%" stop-color="#c45c7a"/>
+    </linearGradient>
   </defs>
   <rect width="1920" height="1080" fill="url(#bg)"/>
   <rect width="1920" height="1080" fill="url(#glow)"/>
+
+  <!-- Сакура по центру фона -->
+  <g transform="translate(960 420)" opacity="0.55">
+    <path d="M0 130 Q-18 50 0 -30 Q18 50 0 130" stroke="#6b3a48" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <path d="M0 95 Q35 35 65 10" stroke="#6b3a48" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M0 70 Q-45 15 -58 -35" stroke="#6b3a48" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <g fill="url(#petalGrad)">
+      <circle cx="65" cy="10" r="22"/>
+      <circle cx="78" cy="0" r="17"/>
+      <circle cx="52" cy="0" r="17"/>
+      <circle cx="-58" cy="-35" r="20"/>
+      <circle cx="0" cy="55" r="28"/>
+      <circle cx="16" cy="44" r="22"/>
+      <circle cx="-16" cy="44" r="22"/>
+      <circle cx="0" cy="55" r="8" fill="#fff8f5" opacity="0.65"/>
+    </g>
+  </g>
+
+  <!-- Разбросанные лепестки -->
+  <g fill="#ffb7c5" opacity="0.35">
+    <ellipse cx="420" cy="280" rx="10" ry="6" transform="rotate(-20 420 280)"/>
+    <ellipse cx="1500" cy="320" rx="9" ry="5" transform="rotate(25 1500 320)"/>
+    <ellipse cx="680" cy="780" rx="8" ry="5" transform="rotate(40 680 780)"/>
+    <ellipse cx="1280" cy="720" rx="10" ry="6" transform="rotate(-10 1280 720)"/>
+    <ellipse cx="960" cy="180" rx="7" ry="4" transform="rotate(15 960 180)"/>
+  </g>
 </svg>

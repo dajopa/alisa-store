@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { heroSlides } from "@/lib/media";
+import { HeroSakuraArt } from "@/components/HeroSakuraArt";
 import { SITE } from "@/lib/site";
 
 export function Hero() {
@@ -50,32 +51,33 @@ export function Hero() {
         style={{ y }}
         className="relative z-10 flex min-h-[85vh] flex-col justify-center px-4 pt-24 sm:min-h-[88vh] sm:px-6 lg:px-8"
       >
-        <div className="mx-auto w-full max-w-[1200px]">
-          <motion.p
+        <div className="mx-auto grid w-full max-w-[1200px] items-center gap-8 lg:grid-cols-[1fr_auto] lg:gap-12">
+          <div>
+            <motion.p
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mb-4 text-[10px] font-semibold uppercase tracking-[0.42em] text-sakura-light"
-          >
-            Добро пожаловать
-          </motion.p>
-          <motion.h1
+            >
+              Добро пожаловать
+            </motion.p>
+            <motion.h1
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="heading-display max-w-3xl text-4xl font-semibold leading-tight text-washi sm:text-5xl md:text-6xl lg:text-7xl"
-          >
-            {SITE.fullName}
-          </motion.h1>
-          <motion.p
+            >
+              {SITE.fullName}
+            </motion.h1>
+            <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.35 }}
             className="mt-6 max-w-xl text-base font-light leading-relaxed text-washi/80 md:text-lg"
-          >
-            {SITE.tagline}
-          </motion.p>
-          <motion.div
+            >
+              {SITE.tagline}
+            </motion.p>
+            <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.45 }}
@@ -84,18 +86,21 @@ export function Hero() {
             <Link
               href="/#services"
               className="inline-flex min-h-12 items-center justify-center rounded-sm bg-sakura px-10 text-[11px] font-semibold uppercase tracking-[0.22em] text-plum-deep shadow-sakura transition-[filter] hover:brightness-105"
-            >
-              Наши услуги
-            </Link>
-            <Link
+              >
+                Наши услуги
+              </Link>
+              <Link
               href={SITE.orderTelegramHref}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-h-12 items-center justify-center rounded-sm border border-sakura-light/50 bg-washi/10 px-10 text-[11px] font-semibold uppercase tracking-[0.2em] text-washi backdrop-blur-sm transition-colors hover:border-sakura hover:text-sakura-light"
-            >
-              Заказать дизайн
-            </Link>
-          </motion.div>
+              >
+                Заказать дизайн
+              </Link>
+            </motion.div>
+          </div>
+
+          <HeroSakuraArt className="mx-auto h-[min(42vw,220px)] w-[min(42vw,200px)] sm:h-[240px] sm:w-[210px] lg:mx-0 lg:h-[300px] lg:w-[260px]" />
         </div>
       </motion.div>
     </section>
